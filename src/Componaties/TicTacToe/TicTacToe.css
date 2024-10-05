@@ -1,0 +1,600 @@
+:root {
+  --clr-dark: #3bc9db;
+  --clr-light: #22b8cf;
+  --clr-gray: #adb5bd;
+  --clr-primary: rgba(255, 215, 0, 0.3);
+  --clr-primary-light: rgba(255, 215, 0, 0.4);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  /* background-color: #fff; */
+
+  /* background-image: url(../Assets/img-4.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed; */
+
+  text-align: center;
+  font-family: "Press Start 2P", "Orbitron", "Courier New", monospace;
+}
+
+/* ---------------------------------------------- */
+
+.highlight {
+  position: relative;
+}
+
+.highlight::after {
+  display: block;
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  opacity: 0.7;
+  transform: scale(1.1, 1.55) skewX(-15deg);
+
+  background-image: linear-gradient(to top left, #ffd43b, #fcc419);
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff3bf;
+
+  max-width: 30rem;
+  height: 22rem;
+  padding: 1rem;
+  box-shadow: 0 4rem 6rem rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  transition: all 0.5s;
+  border-radius: 10px;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(3px);
+  z-index: 100;
+  transition: all 1.7s;
+}
+
+.modal__header {
+  font-size: 1.3rem;
+  margin-bottom: 3rem;
+  color: #222;
+  line-height: 1.6;
+}
+
+.modal__form {
+  /* margin: 0 3rem; */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.modal__form label {
+  font-size: 1rem;
+  color: #333;
+  font-weight: 500;
+  display: block;
+}
+
+.modal__form input {
+  font-size: 1rem;
+  margin: 1rem;
+  padding: 0.7rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 0.5rem;
+}
+
+.modal__form button {
+  grid-column: 1 / span 2;
+  justify-self: center;
+
+  display: inline-block;
+  background-color: #ffd43b;
+  font-size: 0.8rem;
+  font-family: inherit;
+  font-weight: 500;
+  border: none;
+  padding: 0.3rem 1rem;
+  border-radius: 10rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.btn:hover {
+  background-color: #fcc419;
+}
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+}
+/* ---------------------------------------------- */
+ul {
+  list-style: none;
+  display: flex;
+  gap: 6.6rem;
+  margin-left: 1rem;
+}
+
+li {
+  font-size: 1.5rem;
+  font-weight: 800;
+  /* padding: 1rem; */
+}
+
+li:first-child {
+  color: var(--clr-dark);
+}
+li:nth-child(2) {
+  color: var(--clr-light);
+}
+li:last-child {
+  color: var(--clr-gray);
+}
+
+.container {
+  color: #fff;
+  padding: 2rem 9rem;
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+.name {
+  font-weight: 600;
+}
+.flex {
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.winning-button {
+  background: var(--clr-primary) !important; /* Golden glow */
+
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.5),
+    inset 0 0 15px rgba(255, 215, 0, 0.5) !important;
+  border: 2px solid rgba(255, 215, 0, 0.7) !important;
+  transition: all 0.3s ease;
+}
+
+.winning-button:hover {
+  background: var(--clr-primary-light) !important;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.7),
+    inset 0 0 20px rgba(255, 215, 0, 0.7) !important;
+}
+.win {
+  animation: 1.4s ease infinite reverse glow;
+}
+
+@keyframes glow {
+  0% {
+    text-shadow: 0 0;
+    transform: scale(0.9);
+  }
+
+  50% {
+    transform: scale(1.05);
+  }
+  75% {
+    text-shadow: 0 0 3px;
+    filter: brightness(300%);
+  }
+  100% {
+    transform: scale(0.9);
+  }
+}
+/*?------------------------------------------------------------------------  */
+/* .win {
+  position: relative;
+  overflow: hidden;
+  animation: golden-pulse 2s infinite alternate;
+  border-top-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+.win::before,
+.win::after {
+  content: "";
+  position: absolute;
+  top: -100%;
+  left: -100%;
+  width: 300%;
+  height: 300%;
+  background: repeating-conic-gradient(
+    from 0deg,
+    rgba(255, 215, 0, 0.1) 0deg 10deg,
+    rgba(255, 215, 0, 0.2) 10deg 20deg
+  );
+  animation: golden-fireworks 6s linear infinite;
+}
+
+.win::after {
+  animation-duration: 12s;
+  animation-direction: reverse;
+  opacity: 0.7;
+}
+
+@keyframes golden-pulse {
+  0% {
+    transform: scale(0.95);
+    
+  }
+  100% {
+    transform: scale(1.05);
+    
+  }
+}
+
+@keyframes golden-fireworks {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+} */
+
+/*?------------------------------------------------------------------------*/
+
+.Reset-btn {
+  font-weight: 400;
+  font-size: 1.2rem;
+  font-family: inherit;
+
+  color: #888;
+
+  cursor: pointer;
+  outline: none;
+  width: 12rem;
+  height: 5rem;
+  border-radius: 3rem;
+
+  /* background-color: #f1f3f5; */
+
+  /* glass effect */
+  /* ------------------------------- */
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.2),
+    rgba(255, 255, 255, 0.1)
+  );
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(30px);
+
+  /* border: 1px solid rgba(255, 255, 255, 0.18); */
+  border: 2px solid #555;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+.Reset-btn:hover {
+  transform: scale(1.02);
+}
+
+.Reset-btn:active {
+  transform: scale(0.95);
+}
+
+/* ------------------------------- */
+
+.board {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  row-gap: 0.6rem;
+  column-gap: 0.6rem;
+}
+
+.board-btn {
+  border: none;
+  border-radius: 10px;
+
+  width: 9rem;
+  height: 8rem;
+
+  /* glass effect */
+  /* --------------------------------- */
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.3),
+    rgba(255, 255, 255, 0.1)
+  );
+  backdrop-filter: blur(1.5px);
+  -webkit-backdrop-filter: blur(30px);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+
+  /* --------------------------------- */
+
+  cursor: pointer;
+  text-align: center;
+  position: relative;
+
+  transform: all 0.3 ease;
+}
+
+.board-btn:hover {
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.45);
+  transform: translateY(-2px);
+}
+.board-btn:active {
+  transform: scale(0.9);
+  /* to make it go down when clicked */
+  /* transform: translateY(3px); */
+}
+
+.board-box img {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* __________________________Stars effect__________________________________ */
+/* stars style  */
+.starry-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: #000;
+  overflow: hidden;
+}
+
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: #fff;
+  border-radius: 50%;
+  animation: star-move infinite linear;
+}
+
+@keyframes star-move {
+  0% {
+    transform: translateY(-100vh);
+  }
+  100% {
+    /* if you increase it the speed of the stars will increase */
+    transform: translateY(100vh);
+  }
+}
+
+/* __________________________Bubble Effect__________________________________ */
+
+/* Bubbles background */
+.bubbles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+  background: linear-gradient(to bottom, #f8f9fa, #e9ecef);
+}
+
+.bubble {
+  position: absolute;
+  bottom: -100px;
+  width: 40px;
+  height: 40px;
+  background: rgba(52, 152, 219, 0.3);
+  /* background-color: red; */
+  border-radius: 50%;
+  opacity: 0.7;
+  animation: rise 10s infinite ease-in;
+}
+
+@keyframes rise {
+  0% {
+    bottom: -100px;
+    transform: translateX(0);
+  }
+  50% {
+    transform: translate(100px, -500px);
+  }
+  100% {
+    bottom: 1080px;
+    transform: translateX(-200px);
+  }
+}
+
+/* __________________________________________ */
+.active-player {
+  position: relative;
+}
+.active-player::after {
+  content: "";
+  position: absolute;
+  /* if you want to make the line grow from right to left then change the left to right */
+  left: 0;
+  bottom: -20px;
+  height: 5px;
+
+  background-color: #ffd43b;
+  animation: grow-line 1s forwards;
+}
+@keyframes grow-line {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+/*?______________________________MEDIA ______________________________   */
+
+@media (max-width: 62.5em) {
+  .modal {
+    min-width: 30rem;
+    height: auto;
+    padding: 1.5rem;
+  }
+}
+@media (max-width: 56.25em) {
+  .container {
+    padding: 2rem 4rem;
+  }
+  .name,
+  .score {
+    font-size: 1rem;
+  }
+  .tictactoe-icon {
+    width: 50%; /* Adjust this value as needed */
+    height: auto;
+  }
+  .board-btn {
+    width: 7rem;
+    height: 6rem;
+  }
+
+  ul {
+    gap: 3rem;
+  }
+
+  li {
+    font-size: 1.2rem;
+  }
+
+  .Reset-btn {
+    width: 10rem;
+    height: 4rem;
+    font-size: 1rem;
+  }
+}
+@media (max-width: 39em) {
+  .container {
+    padding: 1rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+  }
+
+  .board-btn {
+    width: 5rem;
+    height: 4.5rem;
+  }
+
+  ul {
+    gap: 1.5rem;
+    margin-left: 0.5rem;
+  }
+
+  li {
+    font-size: 1rem;
+  }
+
+  .Reset-btn {
+    width: 8rem;
+    height: 3.5rem;
+    font-size: 0.9rem;
+  }
+
+  .modal {
+    min-width: 17rem;
+    height: auto;
+    padding: 1.5rem;
+  }
+
+  .modal__header {
+    line-height: 2.3;
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .modal__form {
+    grid-template-columns: 1fr;
+  }
+
+  .modal__form input {
+    font-size: 0.9rem;
+    margin: 0.5rem;
+    padding: 0.5rem;
+  }
+
+  .modal__form button {
+    grid-column: 1;
+    font-size: 0.7rem;
+    padding: 0.2rem 0.8rem;
+  }
+}
+
+@media (max-width: 26.875em) {
+  .container {
+    padding: 0.5rem;
+  }
+  .name,
+  .score {
+    font-size: 0.7rem;
+  }
+
+  .board-btn {
+    width: 4rem;
+    height: 3.5rem;
+  }
+
+  ul {
+    gap: 1rem;
+    margin-left: 0;
+  }
+
+  li {
+    font-size: 0.8rem;
+  }
+
+  .Reset-btn {
+    width: 7rem;
+    height: 3rem;
+    font-size: 0.8rem;
+  }
+
+  .modal {
+    min-width: 15rem;
+    padding: 1.5rem;
+  }
+
+  .modal__header {
+    line-height: 2.3;
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+  }
+
+  .modal__form input {
+    font-size: 0.8rem;
+    margin: 0.3rem;
+    padding: 0.4rem;
+  }
+
+  .modal__form button {
+    font-size: 0.6rem;
+    padding: 0.2rem 0.6rem;
+  }
+}
