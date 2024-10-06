@@ -178,6 +178,9 @@ function TikTakToe() {
 
   const openModal = function (e) {
     e.preventDefault();
+    if (player1.trim() === "" && player2.trim() === "")
+      return alert("Please enter player names");
+
     popupRef.current.classList.add("hidden");
     overLayRef.current.classList.add("hidden");
     playersInfoRef.current.classList.remove("hidden");
@@ -251,6 +254,7 @@ function TikTakToe() {
             <label>Player1 (X)</label>
             <input
               type="text"
+              autoFocus
               value={player1}
               onChange={(e) => setPlayer1(e.target.value)}
             />

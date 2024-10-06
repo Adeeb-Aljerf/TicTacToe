@@ -474,7 +474,7 @@ li:last-child {
     font-size: 1rem;
   }
   .tictactoe-icon {
-    width: 50%; /* Adjust this value as needed */
+    width: 50%;
     height: auto;
   }
   .board-btn {
@@ -566,8 +566,8 @@ li:last-child {
   }
 
   .board-btn {
-    width: 4rem;
-    height: 3.5rem;
+    width: 4.5rem;
+    height: 4rem;
   }
 
   ul {
