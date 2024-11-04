@@ -178,7 +178,7 @@ function TikTakToe() {
 
   const openModal = function (e) {
     e.preventDefault();
-    if (player1.trim() === "" && player2.trim() === "")
+    if (player1.trim() === "" || player2.trim() === "")
       return alert("Please enter player names");
 
     popupRef.current.classList.add("hidden");
